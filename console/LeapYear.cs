@@ -7,24 +7,36 @@ public class LeapYear {
 
         var leap = new LeapYear();
 
-        int year = Convert.ToInt32(Console.ReadLine());
+        try
+        {
+            var year = Convert.ToInt32(Console.ReadLine()); 
 
-        Console.WriteLine(leap.printLeapYear(year));
+            Console.WriteLine(leap.printLeapYear(year));
+        }
+        catch (System.Exception)
+        {
+            Console.WriteLine("Please enter an integer");
+        }
+
     }
     public bool isLeapYear(int year) {
-        if (year % 4 == 0)
+        if(year >= 1582)
         {
-            if (year % 100 == 0)
+            if (year % 4 == 0)
             {
-                if (year % 400 == 0)
+                if (year % 100 == 0)
                 {
-                    return true;
+                    if (year % 400 == 0)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
-        return false;
+        return false;   
     }
 
     public string printLeapYear(int year)
