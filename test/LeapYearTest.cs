@@ -8,7 +8,7 @@ public class LeapYearTest
 
         var leap = new LeapYear();
 
-        var result = leap.isLeapYear(40);
+        var result = leap.isLeapYear(1600);
 
         result.Should().Be(true);
     }
@@ -19,7 +19,7 @@ public class LeapYearTest
 
         var leap = new LeapYear();
 
-        var result = leap.isLeapYear(100);
+        var result = leap.isLeapYear(1700);
 
         result.Should().Be(false);
     }
@@ -30,7 +30,7 @@ public class LeapYearTest
 
         var leap = new LeapYear();
 
-        var result = leap.isLeapYear(400);
+        var result = leap.isLeapYear(1640);
 
         result.Should().Be(true);
     }
@@ -40,7 +40,7 @@ public class LeapYearTest
     {
         var leap = new LeapYear();
 
-        var result = leap.printLeapYear(300);
+        var result = leap.printLeapYear(1700);
 
         result.Should().Be("nay");
     }
@@ -50,8 +50,19 @@ public class LeapYearTest
     {
         var leap = new LeapYear();
 
-        var result = leap.printLeapYear(400);
+        var result = leap.printLeapYear(1600);
 
         result.Should().Be("yay");
+    }
+
+    [Fact]
+    public void main_when_run_fails_because_int_less_than_1582()
+    {
+        // Given
+        var leap = new LeapYear();
+        // When
+        var result = leap.printLeapYear(1500);
+        // Then
+        result.Should().Be("nay");
     }
 }
